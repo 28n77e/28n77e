@@ -57,16 +57,16 @@
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
               <div style={{ width: 8, height: 8, background: T.GOLD, borderRadius: '50%' }} />
-              <window.Eyebrow>§02 · Approach &nbsp;·&nbsp; <span style={{ color: T.GOLD }}>Opus MMXXV</span></window.Eyebrow>
+              <window.Eyebrow>§02 · Approach &nbsp;·&nbsp; Opus MMXXV</window.Eyebrow>
             </div>
             <h2 style={{ fontFamily: T.SERIF, fontSize: 72, fontWeight: 300, letterSpacing: '-0.03em', lineHeight: 1.02, margin: '28px 0 0' }}>
-              A craft in <span style={{ fontStyle: 'italic', color: T.GOLD }}>seven</span><br />movements<span style={{ color: T.GOLD }}>.</span>
+              A craft in <span style={{ fontStyle: 'italic' }}>seven</span><br />movements<span style={{ color: T.GOLD }}>.</span>
             </h2>
             {/* Tempo marking */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 28, fontFamily: T.SERIF, fontSize: 18, fontStyle: 'italic', color: T.GOLD }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 28, fontFamily: T.SERIF, fontSize: 18, fontStyle: 'italic', color: T.INK }}>
               <span style={{ fontSize: 28, lineHeight: 1 }}>𝅘𝅥</span>
               <span>= 60 &nbsp; — &nbsp; lento, ma con cura</span>
-              <div style={{ width: 80, height: 1, background: T.RULE, marginLeft: 8 }} />
+              <div style={{ width: 80, height: 1, background: 'rgba(15,30,61,0.3)', marginLeft: 8 }} />
             </div>
           </div>
           <div style={{ fontFamily: T.SERIF, fontSize: 17, fontStyle: 'italic', opacity: 0.75, maxWidth: 380, lineHeight: 1.6, borderLeft: `2px solid ${T.GOLD}`, paddingLeft: 20 }}>
@@ -78,14 +78,10 @@
         <div style={{ position: 'relative', height: 80, margin: '0 0 8px', opacity: 0.9 }}>
           {/* 5-line staff */}
           {[0, 1, 2, 3, 4].map(i => (
-            <div key={i} style={{ position: 'absolute', top: 14 + i * 12, left: 0, right: 0, height: 1, background: T.RULE }} />
+            <div key={i} style={{ position: 'absolute', top: 14 + i * 12, left: 0, right: 0, height: 1, background: 'rgba(15,30,61,0.3)' }} />
           ))}
           {/* Clef */}
           <div style={{ position: 'absolute', left: 0, top: -6, fontFamily: T.SERIF, fontSize: 90, color: T.GOLD, lineHeight: 1 }}>𝄞</div>
-          {/* Time signature */}
-          <div style={{ position: 'absolute', left: 70, top: 8, fontFamily: T.SERIF, fontSize: 22, color: T.INK, lineHeight: 1, opacity: 0.85 }}>
-            <div>7</div><div style={{ marginTop: -4 }}>4</div>
-          </div>
           {/* Notes at rising/descending pitches */}
           {stages.map((s, i) => {
             const pitches = [50, 38, 44, 32, 26, 38, 20]; // y positions
@@ -110,11 +106,11 @@
         </div>
 
         {/* Stage nav */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', borderTop: `1px solid ${T.RULE}`, borderBottom: `1px solid ${T.RULE}` }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', borderTop: '1px solid rgba(15,30,61,0.25)', borderBottom: '1px solid rgba(15,30,61,0.25)' }}>
           {stages.map((s, i) => (
             <button key={i} onClick={() => setActive(i)} style={{
               background: 'transparent', border: 'none', padding: '24px 16px', cursor: 'pointer',
-              borderLeft: i === 0 ? 'none' : `1px solid ${T.RULE}`,
+              borderLeft: i === 0 ? 'none' : '1px solid rgba(15,30,61,0.2)',
               textAlign: 'left', position: 'relative',
               color: T.INK, opacity: active === i ? 1 : 0.55,
               transition: 'opacity .15s, background .15s',
@@ -126,7 +122,7 @@
               {active === i && <span style={{ position: 'absolute', top: -1, left: 0, right: 0, height: 1, background: T.GOLD }} />}
               <div style={{ fontFamily: T.MONO, fontSize: 10, letterSpacing: '0.22em', opacity: 0.7 }}>MVT. {s.code}</div>
               <div style={{ fontFamily: T.SERIF, fontSize: 18, fontStyle: 'italic', fontWeight: 400, marginTop: 8 }}>{s.title}</div>
-              <div style={{ fontFamily: T.SERIF, fontSize: 12, fontStyle: 'italic', color: T.GOLD, opacity: active === i ? 1 : 0.6, marginTop: 4 }}>— {s.tempo}</div>
+              <div style={{ fontFamily: T.SERIF, fontSize: 12, fontStyle: 'italic', color: T.INK, opacity: active === i ? 1 : 0.55, marginTop: 4 }}>— {s.tempo}</div>
             </button>
           ))}
         </div>
@@ -134,8 +130,8 @@
         {/* Stage detail */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 80, padding: '64px 0 0' }}>
           <div>
-            <div style={{ fontFamily: T.MONO, fontSize: 10, letterSpacing: '0.28em', color: T.GOLD, marginBottom: 10 }}>MOVIMENTO</div>
-            <div style={{ fontFamily: T.SERIF, fontSize: 128, fontWeight: 300, letterSpacing: '-0.04em', lineHeight: 1, color: T.GOLD }}>
+            <div style={{ fontFamily: T.MONO, fontSize: 10, letterSpacing: '0.28em', color: T.INK, opacity: 0.6, marginBottom: 10 }}>MOVIMENTO</div>
+            <div style={{ fontFamily: T.SERIF, fontSize: 128, fontWeight: 300, letterSpacing: '-0.04em', lineHeight: 1, color: T.INK }}>
               {a.code}<span style={{ color: T.INK }}>.</span>
             </div>
             <div style={{ fontFamily: T.SERIF, fontSize: 24, fontStyle: 'italic', color: T.INK, marginTop: 8, opacity: 0.9 }}>— {a.tempo}</div>
