@@ -6,27 +6,25 @@
   // ──────────────────────────────────────────────────────────────────────
   // NAV — sticky, scroll-aware, with active section highlighting
   // ──────────────────────────────────────────────────────────────────────
-  window.SiteNav = function SiteNav({ active, dark }) {
+  window.SiteNav = function SiteNav({ active }) {
     const [scrolled, setScrolled] = React.useState(false);
     React.useEffect(() => {
       const onScroll = () => setScrolled(window.scrollY > 40);
       window.addEventListener('scroll', onScroll, { passive: true });
       return () => window.removeEventListener('scroll', onScroll);
     }, []);
-    const textColor = T.INK;
-    const background = scrolled ? 'rgba(245,239,228,0.92)' : 'transparent';
     return (
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
         padding: scrolled ? '14px 48px' : '24px 48px',
-        background,
-        backdropFilter: scrolled ? 'blur(14px) saturate(1.1)' : 'none',
-        borderBottom: scrolled ? `1px solid ${T.RULE}` : '1px solid transparent',
+        background: 'rgba(245,239,228,0.96)',
+        backdropFilter: 'blur(14px) saturate(1.1)',
+        borderBottom: `1px solid ${T.RULE}`,
         transition: 'padding .35s cubic-bezier(.2,.7,.3,1), background .35s, border-color .35s',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <a href="index.html" style={{ textDecoration: 'none' }}>
-          <window.TheDot scale={0.9} showTag={false} color={textColor} />
+          <window.TheDot scale={0.9} showTag={false} color={T.INK} />
         </a>
         <div style={{ display: 'flex', gap: 36, alignItems: 'center' }}>
           {window.NAV_SECTIONS.map(s => (
@@ -34,7 +32,7 @@
               style={{
                 fontFamily: T.SANS, fontSize: 12, fontWeight: 500, letterSpacing: '0.14em',
                 textTransform: 'uppercase', textDecoration: 'none',
-                color: textColor, opacity: active === s.key ? 1 : 0.55,
+                color: T.INK, opacity: active === s.key ? 1 : 0.55,
                 transition: 'opacity .15s, color .35s',
                 position: 'relative', paddingBottom: 4,
               }}>
