@@ -131,21 +131,21 @@
               </div>
             </div>
             {/* Gilded stat card */}
-            <div style={{ background: T.PAPER_DEEP, color: T.INK, padding: 36, position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div style={{ background: T.INK, color: T.PAPER, padding: 36, position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div style={{ position: 'absolute', top: -6, left: -6, width: 40, height: 40, border: `2px solid ${T.GOLD}`, borderRight: 'none', borderBottom: 'none' }} />
               <div style={{ position: 'absolute', bottom: -6, right: -6, width: 40, height: 40, border: `2px solid ${T.GOLD}`, borderLeft: 'none', borderTop: 'none' }} />
               <div>
                 <div style={{ fontFamily: T.MONO, fontSize: 9, letterSpacing: '0.26em', textTransform: 'uppercase', color: T.GOLD, opacity: 0.9 }}>
                   ✦ &nbsp; Class of 2026
                 </div>
-                <div style={{ fontFamily: T.SERIF, fontSize: 128, fontWeight: 300, letterSpacing: '-0.04em', lineHeight: 1, marginTop: 18, color: T.INK }}>
+                <div style={{ fontFamily: T.SERIF, fontSize: 128, fontWeight: 300, letterSpacing: '-0.04em', lineHeight: 1, marginTop: 18, color: T.PAPER }}>
                   94<span style={{ color: T.GOLD }}>%</span>
                 </div>
                 <div style={{ fontFamily: T.SERIF, fontSize: 15, fontStyle: 'italic', opacity: 0.82, marginTop: 14, maxWidth: 240, lineHeight: 1.5 }}>
                   placed at a top-choice programme — across Ivy, Oxbridge and Russell Group institutions.
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, marginTop: 40, paddingTop: 24, borderTop: `1px solid ${T.RULE}` }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, marginTop: 40, paddingTop: 24, borderTop: `1px solid ${T.RULE_DARK}` }}>
                 {[['24', 'Cohort'], ['7', 'Yrs'], ['2', 'Offices']].map(([n, l]) => (
                   <div key={l}>
                     <div style={{ fontFamily: T.SERIF, fontSize: 32, color: T.GOLD, lineHeight: 1 }}>{n}</div>
