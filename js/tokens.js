@@ -34,7 +34,7 @@ window.TheDot = function TheDot({ color, scale = 1, showTag = true, tagColor }) 
   const tag = tagColor || ink;
   return (
     <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 * scale, lineHeight: 1 }}>
-      <img src="assets/logo.png" alt="28N 77E seal" style={{ height: 44 * scale, width: 44 * scale, display: 'block', flexShrink: 0 }} />
+      <img src="assets/logo.png" alt="28N 77E seal" style={{ height: 96 * scale, width: 96 * scale, display: 'block', flexShrink: 0 }} />
       <div style={{ fontFamily: T.SERIF, fontSize: 22 * scale, fontWeight: 500, letterSpacing: '0.01em', color: ink, lineHeight: 1 }}>
         28N 77E
       </div>
