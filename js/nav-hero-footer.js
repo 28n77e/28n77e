@@ -13,18 +13,14 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       return () => window.removeEventListener('scroll', onScroll);
     }, []);
-    // Pages that open on a dark full-bleed section (Approach, Begin) need a
-    // light-on-dark nav before the user scrolls, or the dark-ink text
-    // vanishes against the dark section behind the transparent nav.
-    const showLight = dark && !scrolled;
-    const textColor = showLight ? T.PAPER : T.INK;
-    const background = scrolled ? 'rgba(245,239,228,0.92)' : (dark ? 'rgba(10,21,48,0.6)' : 'transparent');
+    const textColor = T.INK;
+    const background = scrolled ? 'rgba(245,239,228,0.92)' : 'transparent';
     return (
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
         padding: scrolled ? '14px 48px' : '24px 48px',
         background,
-        backdropFilter: (scrolled || dark) ? 'blur(14px) saturate(1.1)' : 'none',
+        backdropFilter: scrolled ? 'blur(14px) saturate(1.1)' : 'none',
         borderBottom: scrolled ? `1px solid ${T.RULE}` : '1px solid transparent',
         transition: 'padding .35s cubic-bezier(.2,.7,.3,1), background .35s, border-color .35s',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -135,21 +131,21 @@
               </div>
             </div>
             {/* Gilded stat card */}
-            <div style={{ background: T.INK, color: T.PAPER, padding: 36, position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div style={{ background: T.PAPER_DEEP, color: T.INK, padding: 36, position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div style={{ position: 'absolute', top: -6, left: -6, width: 40, height: 40, border: `2px solid ${T.GOLD}`, borderRight: 'none', borderBottom: 'none' }} />
               <div style={{ position: 'absolute', bottom: -6, right: -6, width: 40, height: 40, border: `2px solid ${T.GOLD}`, borderLeft: 'none', borderTop: 'none' }} />
               <div>
                 <div style={{ fontFamily: T.MONO, fontSize: 9, letterSpacing: '0.26em', textTransform: 'uppercase', color: T.GOLD, opacity: 0.9 }}>
                   ✦ &nbsp; Class of 2026
                 </div>
-                <div style={{ fontFamily: T.SERIF, fontSize: 128, fontWeight: 300, letterSpacing: '-0.04em', lineHeight: 1, marginTop: 18, color: T.PAPER }}>
+                <div style={{ fontFamily: T.SERIF, fontSize: 128, fontWeight: 300, letterSpacing: '-0.04em', lineHeight: 1, marginTop: 18, color: T.INK }}>
                   94<span style={{ color: T.GOLD }}>%</span>
                 </div>
                 <div style={{ fontFamily: T.SERIF, fontSize: 15, fontStyle: 'italic', opacity: 0.82, marginTop: 14, maxWidth: 240, lineHeight: 1.5 }}>
                   placed at a top-choice programme — across Ivy, Oxbridge and Russell Group institutions.
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, marginTop: 40, paddingTop: 24, borderTop: `1px solid ${T.RULE_DARK}` }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, marginTop: 40, paddingTop: 24, borderTop: `1px solid ${T.RULE}` }}>
                 {[['24', 'Cohort'], ['7', 'Yrs'], ['2', 'Offices']].map(([n, l]) => (
                   <div key={l}>
                     <div style={{ fontFamily: T.SERIF, fontSize: 32, color: T.GOLD, lineHeight: 1 }}>{n}</div>
@@ -181,34 +177,34 @@
   // ──────────────────────────────────────────────────────────────────────
   window.Footer = function Footer() {
     return (
-      <footer style={{ background: T.INK_DEEP, color: T.PAPER, padding: '80px 72px 40px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 48, paddingBottom: 64, borderBottom: `1px solid ${T.RULE_DARK}` }}>
+      <footer style={{ background: T.PAPER, color: T.INK, padding: '80px 72px 40px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 48, paddingBottom: 64, borderBottom: `1px solid ${T.RULE}` }}>
           <div>
-            <window.TheDot color={T.PAPER} dotColor={T.GOLD} tagColor={T.PAPER} scale={1.3} />
+            <window.TheDot color={T.INK} dotColor={T.GOLD} tagColor={T.INK} scale={1.3} />
             <div style={{ fontFamily: T.SERIF, fontSize: 16, fontStyle: 'italic', marginTop: 28, opacity: 0.8, lineHeight: 1.6, maxWidth: 360 }}>
               A boutique admissions practice for the Ivy League and peer institutions. Since 2019.
             </div>
           </div>
           <div>
-            <window.Eyebrow color={T.PAPER}>Practice</window.Eyebrow>
+            <window.Eyebrow>Practice</window.Eyebrow>
             <div style={{ marginTop: 20, display: 'flex', flexDirection: 'column', gap: 10, fontFamily: T.SERIF, fontSize: 15, opacity: 0.85 }}>
               {window.NAV_SECTIONS.map(s => (
-                <a key={s.key} href={s.href} style={{ color: T.PAPER, textDecoration: 'none' }}>{s.label}</a>
+                <a key={s.key} href={s.href} style={{ color: T.INK, textDecoration: 'none' }}>{s.label}</a>
               ))}
             </div>
           </div>
           <div>
-            <window.Eyebrow color={T.PAPER}>Offices</window.Eyebrow>
+            <window.Eyebrow>Offices</window.Eyebrow>
             <div style={{ marginTop: 20, display: 'flex', flexDirection: 'column', gap: 14, fontFamily: T.SERIF, fontSize: 15, opacity: 0.85, fontStyle: 'italic' }}>
               <div>New Delhi</div>
               <div>Bangalore</div>
             </div>
           </div>
           <div>
-            <window.Eyebrow color={T.PAPER}>Correspondence</window.Eyebrow>
+            <window.Eyebrow>Correspondence</window.Eyebrow>
             <div style={{ marginTop: 20, display: 'flex', flexDirection: 'column', gap: 10, fontFamily: T.SERIF, fontSize: 15, opacity: 0.85 }}>
-              <a href="mailto:connect@28n77e.in" style={{ color: T.PAPER, textDecoration: 'none', borderBottom: `1px solid ${T.GOLD}`, paddingBottom: 2, alignSelf: 'flex-start' }}>connect@28n77e.in</a>
-              <a href="tel:+919886085668" style={{ color: T.PAPER, textDecoration: 'none' }}>+91 98860 85668</a>
+              <a href="mailto:connect@28n77e.in" style={{ color: T.INK, textDecoration: 'none', borderBottom: `1px solid ${T.GOLD}`, paddingBottom: 2, alignSelf: 'flex-start' }}>connect@28n77e.in</a>
+              <a href="tel:+919886085668" style={{ color: T.INK, textDecoration: 'none' }}>+91 98860 85668</a>
               <div style={{ fontFamily: T.MONO, fontSize: 10, letterSpacing: '0.18em', marginTop: 12, opacity: 0.55 }}>CONSULTATIONS · BY APPOINTMENT</div>
             </div>
           </div>
